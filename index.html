@@ -1,1 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vox et Verba — German & English Lessons</title>
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --text: #1f2937;
+      --muted: #5b6472;
+      --primary: #1f5fae;
+      --primary-dark: #174985;
+      --card: #ffffff;
+      --border: #d8e0eb;
+      --shadow: 0 10px 30px rgba(31, 95, 174, 0.08);
+    }
 
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    .brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 22px;
+      padding: 0;
+      margin: 0;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      padding: 72px 0 48px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      margin: 0 0 16px;
+      line-height: 1.1;
+      color: #13233c;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0 auto 28px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.2s ease;
+      border: 2px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background: #eef5ff;
+    }
+
+    section {
+      padding: 28px 0;
+    }
+
+    .section-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2rem;
+      margin: 0 0 12px;
+      color: #13233c;
+      text-align: center;
+    }
+
+    .section-text {
+      text-align: center;
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0 auto 30px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.6rem;
+      color: #13233c;
+    }
+
+    .card p {
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
+
+    .lesson-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .lesson-item {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .lesson-item h4 {
+      margin: 0 0 8px;
+      color: #13233c;
+      font-size: 1.1rem;
+    }
+
+    .lesson-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .cta {
+      padding: 50px 0 70px;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, #1f5fae, #163d72);
+      color: white;
+      border-radius: 24px;
+      padding: 42px 30px;
+      text-align: center;
+      box-shadow: 0 16px 40px rgba(22, 61, 114, 0.2);
+    }
+
+    .cta-box h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.1rem;
+      margin: 0 0 12px;
+    }
+
+    .cta-box p {
+      margin: 0 auto 24px;
+      max-width: 700px;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .cta-box .btn-secondary {
+      background: white;
+      color: var(--primary-dark);
+      border-color: white;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: #fff;
+      padding: 22px 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .grid-3,
+      .lesson-list {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        gap: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand">
+        <img src="book-logo.png" alt="Vox et Verba logo" />
+        <span>Vox et Verba</span>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#">German</a></li>
+          <li><a href="#">English</a></li>
+          <li><a href="#">Study Materials</a></li>
+          <li><a href="#">Full Explanations</a></li>
+          <li><a href="#">Book a Lesson</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>German and English Lessons</h1>
+        <p>
+          Private lessons, clear grammar explanations, downloadable study materials,
+          and exam preparation for German and English learners.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#">Learn German</a>
+          <a class="btn btn-secondary" href="#">Learn English</a>
+          <a class="btn btn-primary" href="#">Book a Lesson</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">About the Teacher</h2>
+        <p class="section-text">
+          Experienced German and English teacher offering private lessons, structured explanations,
+          exam preparation, and study support for learners of different levels.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="grid-3">
+          <article class="card">
+            <h3>German Lessons</h3>
+            <p>Short lesson notes, useful examples, and practical explanations for learners.</p>
+          </article>
+          <article class="card">
+            <h3>Study Materials</h3>
+            <p>Downloadable worksheets, grammar summaries, vocabulary lists, and revision materials.</p>
+          </article>
+          <article class="card">
+            <h3>Full Explanations</h3>
+            <p>Clear and complete explanations for difficult grammar topics and language structures.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Latest Lesson Ideas</h2>
+        <div class="lesson-list">
+          <article class="lesson-item">
+            <h4>German Word Order Explained</h4>
+            <p>A simple and complete explanation with examples for beginners.</p>
+          </article>
+          <article class="lesson-item">
+            <h4>German Cases Explained Simply</h4>
+            <p>A clear guide to nominative, accusative, dative, and genitive.</p>
+          </article>
+          <article class="lesson-item">
+            <h4>English Tenses Explained</h4>
+            <p>A structured overview of the main English tenses with easy examples.</p>
+          </article>
+          <article class="lesson-item">
+            <h4>Present Perfect vs Past Simple</h4>
+            <p>A practical explanation of one of the most common English problems.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-box">
+          <h2>Start Learning Today</h2>
+          <p>
+            Book a lesson for German or English and get clear explanations, useful materials,
+            and support tailored to your level and goals.
+          </p>
+          <a class="btn btn-secondary" href="#">Book a Lesson</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Contact: WhatsApp / Email / Booking form
+    </div>
+  </footer>
+</body>
+</html>
